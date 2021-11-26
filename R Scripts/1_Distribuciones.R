@@ -9,8 +9,6 @@
 library(zoo)
 library(fitdistrplus)
 library(PearsonDS)
-library(rJava)
-library(xlsx)
 
 # Cargando la informacion (Maxima en 24H) ---------------------------------
 
@@ -34,8 +32,8 @@ Ajuste_datos <- function(data){
 
 data24 <- Ajuste_datos(data = data_pp)
 data <- rowSums(matrix(data24), na.rm = FALSE, dims = 1)
-plotdist(data, histo = TRUE, demp = TRUE)
-
+a <- plotdist(data, histo = TRUE, demp = TRUE)
+fitdistrplus::fitdist(data)
 # Funcion de distribuciones -----------------------------------------------
 
 data_max=data
